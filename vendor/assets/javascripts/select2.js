@@ -944,6 +944,8 @@ the specific language governing permissions and limitations under the Apache Lic
 
                         // collect the created nodes for bulk append
                         var nodes = [];
+                        console.debug(results);
+                        console.debug(query);
                         for (i = 0, l = results.length; i < l; i = i + 1) {
 
                             result=results[i];
