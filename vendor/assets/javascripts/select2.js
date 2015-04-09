@@ -938,19 +938,21 @@ the specific language governing permissions and limitations under the Apache Lic
 
                     populate=function(results, container, depth) {
 
-                        var i, l, result, selectable, disabled, compound, node, label, innerContainer, formatted;
+                        var i, l, result, selectable, disabled, compound, node, label, innerContainer, formatted, person_link, business_link;
 
                         results = opts.sortResults(results, container, query);
 
                         // collect the created nodes for bulk append
                         var nodes = [];
-                        console.debug(results);
-                        console.debug(query);
                         for (i = 0, l = results.length; i < l; i = i + 1) {
 
                             result=results[i];
 
                             disabled = (result.disabled === true);
+                            person_link = result.person_link;
+                            console.debug(person_link);
+                            business_link = result.business_link;
+                            console.debug(business_link);
                             selectable = (!disabled) && (id(result) !== undefined);
 
                             compound=result.children && result.children.length > 0;
