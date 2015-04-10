@@ -352,7 +352,7 @@ the specific language governing permissions and limitations under the Apache Lic
     }
 
 
-    function markMatch(text, term, markup, escapeMarkup, person_link, business_link) {
+    function markMatch(text, term, markup, escapeMarkup) {
         var match=stripDiacritics(text.toUpperCase()).indexOf(stripDiacritics(term.toUpperCase())),
             tl=term.length;
 
@@ -366,8 +366,6 @@ the specific language governing permissions and limitations under the Apache Lic
         markup.push(escapeMarkup(text.substring(match, match + tl)));
         markup.push("</span>");
         markup.push(escapeMarkup(text.substring(match + tl, text.length)));
-        markup.push("<a href='" + person_link + "'>[nowa osoba]</a>");
-        markup.push("<a href='" + business_link + "'>[nowa firma]</a>");
     }
 
     function defaultEscapeMarkup(markup) {
@@ -3435,7 +3433,7 @@ the specific language governing permissions and limitations under the Apache Lic
         dropdownCssClass: "",
         formatResult: function(result, container, query, escapeMarkup) {
             var markup=[];
-            markMatch(this.text(result), query.term, markup, escapeMarkup, result.person_link, result.business_link);
+            markMatch(this.text(result), query.term, markup, escapeMarkup);
             return markup.join("");
         },
         transformVal: function(val) {
